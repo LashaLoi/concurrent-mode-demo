@@ -2,8 +2,8 @@ import React, { useReducer, useEffect, useCallback } from "react";
 
 import { getImages } from "../../api";
 
-import { Img, ImgContainer, PendingContainer } from "./styles";
-import { ImageLoader } from "../../components/ImageLoader";
+import { Img, ImgContainer, PendingContainer, ImgRect } from "./styles";
+import { Loader } from "../../components/Loader";
 
 export const Images = ({ ms }) => {
   const [{ images, loading, error }, setState] = useReducer(
@@ -37,14 +37,19 @@ export const Images = ({ ms }) => {
     fetchImages();
   }, [fetchImages]);
 
-  if (loading) return <ImageLoader />;
+  if (loading) return <Loader />;
   if (error) return <PendingContainer>{error}</PendingContainer>;
 
   return (
     <ImgContainer>
-      {images.map(image => (
-        <Img src={image} alt={image} key={image} />
-      ))}
+      <Img src={images[0]} alt={images[0]} first />
+      <ImgRect>
+        {images
+          .filter((_, i) => i)
+          .map(image => (
+            <Img src={image} alt={image} key={image} />
+          ))}
+      </ImgRect>
     </ImgContainer>
   );
 };

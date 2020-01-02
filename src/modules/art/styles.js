@@ -23,7 +23,7 @@ export const PendingContainer = styled.div`
 `;
 
 export const ArtInfo = styled.div`
-  margin-top: 100px;
+  margin-top: 50px;
 `;
 
 export const Input = styled.input`
@@ -43,20 +43,17 @@ export const InputContainer = styled.div`
 
 export const ImgContainer = styled.div`
   max-width: 100%;
+  height: 500px;
   display: flex;
   justify-content: space-between;
 `;
 
 export const Img = styled.img`
-  width: 19%;
-  height: 200px;
+  width: 50%;
+  height: ${props => (props.first ? `100%` : `50%`)};
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  border-radius: 10px;
 
   filter: ${props => props.blur && `blur(3px)`};
-
-  &:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  }
 `;
+
+export const ImgRect = styled.div``;
