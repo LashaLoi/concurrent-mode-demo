@@ -5,124 +5,69 @@ import { PendingContainer } from "../modules/art/styles";
 import styled from "styled-components";
 
 const LoaderContainer = styled.div`
-  .loader {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    outline: 6px solid #fff;
-    outline-offset: -1px;
-    -webkit-transform: rotate(45deg) scale(0.5);
-    transform: rotate(45deg) scale(0.5);
+  .typing_loader {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    -webkit-animation: typing 1s linear infinite alternate;
+    -moz-animation: Typing 1s linear infinite alternate;
+    -ms-animation: Typing 1s linear infinite alternate;
+    animation: typing 1s linear infinite alternate;
+    margin: 46px auto; /* Not necessary- its only for layouting*/
+    position: relative;
+    left: -12px;
   }
-
-  .loader:before {
-    content: "";
-    display: block;
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    -webkit-animation: rotate 3s infinite;
-    animation: rotate 3s infinite;
-  }
-
-  @-webkit-keyframes rotate {
+  @-webkit-keyframes typing {
     0% {
-      -webkit-transform-origin: bottom left;
-      transform-origin: bottom left;
-      -webkit-transform: translate(-5px, -105px) rotate(0deg) scale(1.1);
-      transform: translate(-5px, -105px) rotate(0deg) scale(1.1);
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.2),
+        24px 0px 0px 0px rgba(255, 255, 255, 0.2);
     }
     25% {
-      -webkit-transform-origin: bottom left;
-      transform-origin: bottom left;
-      -webkit-transform: translate(-5px, -105px) rotate(-180deg) scale(1.1);
-      transform: translate(-5px, -105px) rotate(-180deg) scale(1.1);
-    }
-    26% {
-      -webkit-transform-origin: top left;
-      transform-origin: top left;
-      -webkit-transform: translate(-5px, 105px) rotate(-180deg) scale(1.1);
-      transform: translate(-5px, 105px) rotate(-180deg) scale(1.1);
-    }
-    50% {
-      -webkit-transform-origin: top left;
-      transform-origin: top left;
-      -webkit-transform: translate(-5px, 105px) rotate(-360deg) scale(1.1);
-      transform: translate(-5px, 105px) rotate(-360deg) scale(1.1);
-    }
-    51% {
-      -webkit-transform-origin: top right;
-      transform-origin: top right;
-      -webkit-transform: translate(5px, 105px) rotate(-360deg) scale(1.1);
-      transform: translate(5px, 105px) rotate(-360deg) scale(1.1);
+      background-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 2),
+        24px 0px 0px 0px rgba(255, 255, 255, 0.2);
     }
     75% {
-      -webkit-transform-origin: top right;
-      transform-origin: top right;
-      -webkit-transform: translate(5px, 105px) rotate(-540deg) scale(1.1);
-      transform: translate(5px, 105px) rotate(-540deg) scale(1.1);
-    }
-    76% {
-      -webkit-transform-origin: bottom right;
-      transform-origin: bottom right;
-      -webkit-transform: translate(5px, -105px) rotate(-540deg) scale(1.1);
-      transform: translate(5px, -105px) rotate(-540deg) scale(1.1);
-    }
-    100% {
-      -webkit-transform-origin: bottom right;
-      transform-origin: bottom right;
-      -webkit-transform: translate(5px, -105px) rotate(-720deg) scale(1.1);
-      transform: translate(5px, -105px) rotate(-720deg) scale(1.1);
+      background-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.2),
+        24px 0px 0px 0px rgba(255, 255, 255, 1);
     }
   }
-  @keyframes rotate {
+
+  @-moz-keyframes typing {
     0% {
-      -webkit-transform-origin: bottom left;
-      transform-origin: bottom left;
-      -webkit-transform: translate(-5px, -105px) rotate(0deg) scale(1.1);
-      transform: translate(-5px, -105px) rotate(0deg) scale(1.1);
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.2),
+        24px 0px 0px 0px rgba(255, 255, 255, 0.2);
     }
     25% {
-      -webkit-transform-origin: bottom left;
-      transform-origin: bottom left;
-      -webkit-transform: translate(-5px, -105px) rotate(-180deg) scale(1.1);
-      transform: translate(-5px, -105px) rotate(-180deg) scale(1.1);
-    }
-    26% {
-      -webkit-transform-origin: top left;
-      transform-origin: top left;
-      -webkit-transform: translate(-5px, 105px) rotate(-180deg) scale(1.1);
-      transform: translate(-5px, 105px) rotate(-180deg) scale(1.1);
-    }
-    50% {
-      -webkit-transform-origin: top left;
-      transform-origin: top left;
-      -webkit-transform: translate(-5px, 105px) rotate(-360deg) scale(1.1);
-      transform: translate(-5px, 105px) rotate(-360deg) scale(1.1);
-    }
-    51% {
-      -webkit-transform-origin: top right;
-      transform-origin: top right;
-      -webkit-transform: translate(5px, 105px) rotate(-360deg) scale(1.1);
-      transform: translate(5px, 105px) rotate(-360deg) scale(1.1);
+      background-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 2),
+        24px 0px 0px 0px rgba(255, 255, 255, 0.2);
     }
     75% {
-      -webkit-transform-origin: top right;
-      transform-origin: top right;
-      -webkit-transform: translate(5px, 105px) rotate(-540deg) scale(1.1);
-      transform: translate(5px, 105px) rotate(-540deg) scale(1.1);
+      background-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.2),
+        24px 0px 0px 0px rgba(255, 255, 255, 1);
     }
-    76% {
-      -webkit-transform-origin: bottom right;
-      transform-origin: bottom right;
-      -webkit-transform: translate(5px, -105px) rotate(-540deg) scale(1.1);
-      transform: translate(5px, -105px) rotate(-540deg) scale(1.1);
+  }
+
+  @keyframes typing {
+    0% {
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.2),
+        24px 0px 0px 0px rgba(255, 255, 255, 0.2);
     }
-    100% {
-      -webkit-transform-origin: bottom right;
-      transform-origin: bottom right;
-      -webkit-transform: translate(5px, -105px) rotate(-720deg) scale(1.1);
-      transform: translate(5px, -105px) rotate(-720deg) scale(1.1);
+    25% {
+      background-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 2),
+        24px 0px 0px 0px rgba(255, 255, 255, 0.2);
+    }
+    75% {
+      background-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.2),
+        24px 0px 0px 0px rgba(255, 255, 255, 1);
     }
   }
 `;
@@ -130,7 +75,7 @@ const LoaderContainer = styled.div`
 export const Loader = () => (
   <PendingContainer>
     <LoaderContainer>
-      <div className="loader"></div>
+      <div className="typing_loader"></div>
     </LoaderContainer>
   </PendingContainer>
 );
