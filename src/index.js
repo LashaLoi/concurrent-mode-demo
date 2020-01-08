@@ -6,3 +6,5 @@ import { Art } from "./modules/Art";
 import "./styles/index.css";
 
 render(<Art />, document.getElementById("root"));
+
+//revealOrder="forwards" tail="collapsed"
