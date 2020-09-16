@@ -1,52 +1,15 @@
-import React, { useEffect, useReducer, useCallback } from "react";
+import React from "react";
 
 import { getArt } from "../../api";
 
-import { Loader } from "../../components/Loader";
+import { createResource } from "../../createResource";
 
-import {
-  PendingContainer,
-  ArtInfo,
-  Input,
-  InputContainer,
-  Avatar
-} from "./styles";
+import { ArtInfo, Input, InputContainer, Avatar } from "./styles";
 
-export const Content = ({ ms }) => {
-  const [{ art, loading, error }, setState] = useReducer(
-    (prevState, nextState) => ({ ...prevState, ...nextState }),
-    {
-      art: {},
-      loading: false,
-      error: ""
-    }
-  );
+const artResource = createResource(ms => getArt(ms));
 
-  const fetchArts = useCallback(async () => {
-    setState({ loading: true });
-
-    try {
-      const data = await getArt(ms);
-
-      setState({
-        art: data,
-        loading: false
-      });
-    } catch ({ message }) {
-      setState({
-        error: message,
-        loading: false
-      });
-    }
-  }, [ms]);
-
-  useEffect(() => {
-    fetchArts();
-  }, [fetchArts]);
-
-  if (loading) return <Loader />;
-
-  if (error) return <PendingContainer>{error}</PendingContainer>;
+export const Content = () => {
+  const art = artResource.read(2000);
 
   return (
     <ArtInfo>

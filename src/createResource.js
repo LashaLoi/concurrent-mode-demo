@@ -1,29 +1,31 @@
-const wrapPromise = promise => {
+export const createResource = cb => {
   let status = "pending";
   let result;
-  let suspender = promise.then(
-    r => {
-      status = "success";
-      result = r;
-    },
-    e => {
-      status = "error";
-      result = e;
-    }
-  );
+  let suspender;
 
   return {
-    read() {
-      if (status === "pending") {
-        throw suspender;
-      } else if (status === "error") {
-        throw result;
-      } else if (status === "success") {
-        return result;
+    read(args) {
+      const promise = cb(args);
+
+      suspender = promise.then(
+        r => {
+          status = "success";
+          result = r;
+        },
+        e => {
+          status = "error";
+          result = e;
+        }
+      );
+
+      switch (status) {
+        case "pending":
+          throw suspender;
+        case "error":
+          throw result;
+        case "success":
+          return result;
       }
     }
   };
 };
-
-export const createResource = (asyncFn, ...args) =>
-  wrapPromise(asyncFn(...args));

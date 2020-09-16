@@ -1,46 +1,15 @@
-import React, { useReducer, useEffect, useCallback } from "react";
-
-import { Loader } from "../../components/Loader";
+import React from "react";
 
 import { getComments } from "../../api";
 
-import { PendingContainer, CommentContainer, Avatar, Comment } from "./styles";
+import { CommentContainer, Avatar, Comment } from "./styles";
 
-export const Comments = ({ ms }) => {
-  const [{ comments, loading, error }, setState] = useReducer(
-    (prevState, nextState) => ({ ...prevState, ...nextState }),
-    {
-      comments: [],
-      loading: false,
-      error: ""
-    }
-  );
+import { createResource } from "../../createResource";
 
-  const fetchComments = useCallback(async () => {
-    setState({ loading: true });
+const commentResource = createResource(ms => getComments(ms));
 
-    try {
-      const data = await getComments(ms);
-
-      setState({
-        comments: data,
-        loading: false
-      });
-    } catch ({ message }) {
-      setState({
-        error: message,
-        loading: false
-      });
-    }
-  }, [ms]);
-
-  useEffect(() => {
-    fetchComments();
-  }, [fetchComments]);
-
-  if (loading) return <Loader />;
-
-  if (error) return <PendingContainer>{error}</PendingContainer>;
+export const Comments = () => {
+  const comments = commentResource.read(3000);
 
   return (
     <CommentContainer>
